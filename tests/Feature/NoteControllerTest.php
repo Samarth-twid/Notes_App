@@ -50,4 +50,26 @@ class NoteControllerTest extends TestCase
                 ->assertJsonValidationErrors(['title', 'content']);
     }
 
+    public function testGetAllNotes()
+    {
+        Note::factory()->count(4)->create();
+        $response = $this->getJson('/api/notes');
+
+        $response->assertStatus(200)
+                 ->assertJsonCount(4);
+    }
+    public function testGetNoteNotFound()
+    {
+        $response = $this->getJson('/api/notes/999999');
+        
+        $response->assertStatus(404);
+    }
+
+    public function testGetNoteById()
+    {
+        $note = Note::factory()->create();
+        $response = $this->getJson("/api/notes/{$note->id}");
+
+        $response->assertStatus(200);
+    }
 }
