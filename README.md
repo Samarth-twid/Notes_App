@@ -28,10 +28,10 @@
 
 3.  **Set Up Environment Variables**:
 
-        ```bash
+    ```bash
         cp .env.example .env
 
-        ```
+    ```
 
 4.  **Run Migrations**:
 
@@ -53,3 +53,7 @@
       php artisan test
 
     ```
+
+```
+
+```
