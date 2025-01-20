@@ -9,7 +9,8 @@ class NoteController extends Controller
 {
     public function createNote(Request $request)
     {
-        $note = Note::create();
+        $validatedNote = $request->validate(Note::rules());      
+	$note = Note::create($validatedNote);
         return response()->json($note, 201);
     }
 }

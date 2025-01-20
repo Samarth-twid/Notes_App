@@ -10,4 +10,12 @@ class Note extends Model
     use HasFactory;
     
     protected $fillable = ['title', 'content'];
+
+    public static function rules()
+    {
+        return [
+            'title' => 'required|string|max:127',
+            'content' => 'required|string|max:1023',
+        ];
+    }
 }

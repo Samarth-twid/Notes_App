@@ -12,12 +12,42 @@ class NoteControllerTest extends TestCase
 
     public function testCreateNote()
     {
-        $note = Note::create([
+        $noteData = [
             'title' => 'Test Note',
             'content' => 'This is a test note.',
+        ];
+        $response = $this->postJson('/api/notes', $noteData);
+        $response->assertStatus(201)
+            ->assertJsonFragment($noteData);
+
+        $this->assertDatabaseHas('notes', $noteData);
+    }
+
+    public function testCreateNoteWithoutData()
+    {
+        $invalidData = [
+            'title' => '',
+            'content' => '',
+        ];
+
+        $response = $this->postJson('/api/notes', $invalidData);
+
+        $response->assertStatus(422)
+                 ->assertJsonValidationErrors(['title', 'content']);
+    }
+
+    public function testCreateNoteWithLongInput()
+    {
+        $longTitle = str_repeat('a', 128);
+        $longContent = str_repeat('b', 1024);
+
+        $response = $this->postJson('/api/notes', [
+            'title' => $longTitle,
+            'content' => $longContent,
         ]);
 
-        $this->assertDatabaseHas('notes', ['title' => 'Test Note']);
-        $this->assertDatabaseHas('notes', ['content' => 'This is a test note.']);
+        $response->assertStatus(422)
+                ->assertJsonValidationErrors(['title', 'content']);
     }
+
 }
