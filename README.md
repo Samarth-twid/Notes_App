@@ -1,6 +1,14 @@
 ## Notes App
 
 -   This is an application that lets user create, read, edit and delete notes with title and content.
+-   The title cannot be longer than 127 characters and for the content the limit is set to 1023 characters.
+
+## Features included are
+
+-   Create Note
+-   Display all Notes
+-   Read a Particular Note
+-   Update a Note
 
 ## Pre-requisites
 
@@ -11,7 +19,7 @@
 
 ## Installation Instructions
 
-1.  **Clone the Repository**:
+1. **Clone the Repository**:
 
     ```bash
     git clone https://github.com/yourusername/notes-app.git
@@ -19,41 +27,37 @@
 
     ```
 
-2.  **Install Dependencies**:
+2. **Install Dependencies**:
 
     ```bash
     composer install
 
     ```
 
-3.  **Set Up Environment Variables**:
+3. **Set Up Environment Variables**:
 
     ```bash
         cp .env.example .env
 
     ```
 
-4.  **Run Migrations**:
+4. **Run Migrations**:
 
     ```bash
       php artisan migrate
 
     ```
 
-5.  **Start the server**:
+5. **Start the server**:
 
     ```bash
       php artisan serve
 
     ```
 
-6.  **Run tests (for developers)**:
+6. **Run tests (for developers)**:
 
     ```bash
       php artisan test
 
     ```
-
-```
-
-```
