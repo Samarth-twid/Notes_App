@@ -29,4 +29,12 @@ class NoteController extends Controller
         return response()->json($note, 200);
     }
 
+    public function updateNoteById(Request $request, $id)
+    {
+        $note = Note::findOrFail($id);
+        $validatedData = $request->validate(Note::rules());
+        $note->update($validatedData);
+
+        return response()->json($note);
+    }
 }

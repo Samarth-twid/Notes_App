@@ -12,14 +12,14 @@ class FactoryTest extends TestCase
     use RefreshDatabase;
     
     
-    public function testFactoryCreation()
+    public function testCanFactoryCreateNote()
     {
         $note = Note::factory()->make();
 
         $this->assertInstanceOf(Note::class, $note);
     }
 
-    public function testMockDataInDatabase()
+    public function testCanStoreMockDataInDatabase()
     {
         $note = Note::factory()->create();
 

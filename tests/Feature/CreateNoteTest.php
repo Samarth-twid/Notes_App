@@ -4,13 +4,12 @@ namespace Tests\Feature;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use App\Models\Note;
 
-class NoteControllerTest extends TestCase
+class CreateNoteTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function testCreateNote()
+    public function testCanCreateNote()
     {
         $noteData = [
             'title' => 'Test Note',
@@ -23,7 +22,7 @@ class NoteControllerTest extends TestCase
         $this->assertDatabaseHas('notes', $noteData);
     }
 
-    public function testCreateNoteWithoutData()
+    public function testRestrictsCreateNoteWithoutData()
     {
         $invalidData = [
             'title' => '',
@@ -36,7 +35,7 @@ class NoteControllerTest extends TestCase
                  ->assertJsonValidationErrors(['title', 'content']);
     }
 
-    public function testCreateNoteWithLongInput()
+    public function testRestrictsCreateNoteWithLongInput()
     {
         $longTitle = str_repeat('a', 128);
         $longContent = str_repeat('b', 1024);
@@ -48,28 +47,5 @@ class NoteControllerTest extends TestCase
 
         $response->assertStatus(422)
                 ->assertJsonValidationErrors(['title', 'content']);
-    }
-
-    public function testGetAllNotes()
-    {
-        Note::factory()->count(4)->create();
-        $response = $this->getJson('/api/notes');
-
-        $response->assertStatus(200)
-                 ->assertJsonCount(4);
-    }
-    public function testGetNoteNotFound()
-    {
-        $response = $this->getJson('/api/notes/999999');
-        
-        $response->assertStatus(404);
-    }
-
-    public function testGetNoteById()
-    {
-        $note = Note::factory()->create();
-        $response = $this->getJson("/api/notes/{$note->id}");
-
-        $response->assertStatus(200);
     }
 }

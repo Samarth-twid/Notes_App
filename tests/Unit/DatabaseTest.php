@@ -11,12 +11,12 @@ class DatabaseTest extends TestCase
 {
     use RefreshDatabase;
  
-    public function testDatabaseConnection() 
+    public function testCanConnectToDatabase() 
     {
         $this->assertTrue(DB::connection()->getDatabaseName() !== null, 'Database connection failed.');
     }
 
-    public function testNoteModel()
+    public function testIsNoteModelWorking()
     {
         $note = Note::create([
             'title' => 'Test Note',
@@ -27,7 +27,7 @@ class DatabaseTest extends TestCase
         $this->assertEquals('This is test content.', $note->content);
     }
 
-    public function testNoteRetreivedFromDatabase()
+    public function testRetrievesNoteFromDatabase()
     {
         $note = Note::create([
             'title' => 'Note in DB',
