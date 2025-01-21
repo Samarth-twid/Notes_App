@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Redis;
 
 class CreateNoteTest extends TestCase
 {
@@ -20,6 +21,7 @@ class CreateNoteTest extends TestCase
             ->assertJsonFragment($noteData);
 
         $this->assertDatabaseHas('notes', $noteData);
+        $this->assertEquals(0,Redis::exists('notes_list'));
     }
 
     public function testRestrictsCreateNoteWithoutData()

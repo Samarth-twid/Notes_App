@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Models\Note;
+use Illuminate\Support\Facades\Redis;
 
 class DeleteNoteTest extends TestCase
 {
@@ -28,5 +29,7 @@ class DeleteNoteTest extends TestCase
         $this->assertDatabaseMissing('notes', [
             'id' => $note->id,
         ]);
+        $this->assertEquals(0,Redis::exists('note_' . $note->id));
+        $this->assertEquals(0,Redis::exists('notes_list'));
     }
 }

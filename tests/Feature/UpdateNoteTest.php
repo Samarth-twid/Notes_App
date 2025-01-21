@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Models\Note;
+use Illuminate\Support\Facades\Redis;
 
 class UpdateNoteTest extends TestCase
 {
@@ -34,6 +35,10 @@ class UpdateNoteTest extends TestCase
                  ->assertJsonFragment($updatedData);
 
         $this->assertDatabaseHas('notes', $updatedData);
+
+        $this->assertEquals(1,Redis::exists('note_' . $note->id));
+        $this->assertEquals(0,Redis::exists('notes_list'));
+
     }
 
     public function testRestrictsUpdateNoteWithLongInput()

@@ -5,7 +5,7 @@ namespace Tests\Feature;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class ApiTest extends TestCase{
+class RouteTest extends TestCase{
     use RefreshDatabase;
 
     public function testIsValidRoute()
