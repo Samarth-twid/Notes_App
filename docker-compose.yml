@@ -10,12 +10,11 @@ services:
             - .env.docker
         ports:
             - "9000:80"
-        working_dir: /var/www
         volumes:
             - ./:/var/www
         depends_on:
             - db
-        # entrypoint: ["/var/www/entrypoint.sh"]
+            - redis
 
     db:
         image: mysql:8.0
@@ -27,6 +26,10 @@ services:
             - "3306:3306"
         volumes:
             - db_data:/var/lib/mysql
+            - ./init-db.sh:/docker-entrypoint-initdb.d/init-db.sh
+        command:
+            - --character-set-server=utf8mb4
+            - --collation-server=utf8mb4_unicode_ci
 
     redis:
         image: redis:alpine
