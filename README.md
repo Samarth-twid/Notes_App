@@ -4,12 +4,12 @@ This is a backend API that allows users to create, read, update, and delete note
 
 ## Table of Contents
 
-- [Notes App](#notes-app)
-- [Table of Contents](#table-of-contents)
-- [Features](#features)
-- [Pre-requisites](#pre-requisites)
-- [Installation Instructions](#installation-instructions)
-- [Docker Setup](#docker-setup)
+-   [Notes App](#notes-app)
+-   [Table of Contents](#table-of-contents)
+-   [Features](#features)
+-   [Pre-requisites](#pre-requisites)
+-   [Installation Instructions](#installation-instructions)
+-   [Docker Setup](#docker-setup)
 
 ## Features
 
@@ -35,7 +35,7 @@ This is a backend API that allows users to create, read, update, and delete note
 
     ```bash
     git clone https://github.com/Samarth-twid/Notes_App.git
-    cd notes-app
+    cd Notes_App
 
     ```
 
