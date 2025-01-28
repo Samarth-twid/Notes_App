@@ -10,7 +10,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 class DatabaseTest extends TestCase
 {
     use RefreshDatabase;
- 
+    
     public function testCanConnectToDatabase() 
     {
         $this->assertTrue(DB::connection()->getDatabaseName() !== null, 'Database connection failed.');

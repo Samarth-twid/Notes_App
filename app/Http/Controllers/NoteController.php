@@ -42,7 +42,7 @@ class NoteController extends Controller
             $note = Note::findOrFail($id);
             Redis::set($cacheKey, json_encode($note), 'EX', 3600);
         }
-
+        
         return response()->json($note);
     }
 
