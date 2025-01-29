@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/Samarth-twid/Notes_App.git'
+                git branch:'main' url: 'https://github.com/Samarth-twid/Notes_App.git'
             }
         }
         stage('Build') {
