@@ -4,12 +4,12 @@ This is a backend API that allows users to create, read, update, and delete note
 
 ## Table of Contents
 
-- [Notes App](#notes-app)
-- [Table of Contents](#table-of-contents)
-- [Features](#features)
-- [Pre-requisites](#pre-requisites)
-- [Installation Instructions](#installation-instructions)
-- [Docker Setup](#docker-setup)
+-   [Notes App](#notes-app)
+-   [Table of Contents](#table-of-contents)
+-   [Features](#features)
+-   [Pre-requisites](#pre-requisites)
+-   [Installation Instructions](#installation-instructions)
+-   [Docker Setup](#docker-setup)
 
 ## Features
 
@@ -93,3 +93,5 @@ To run the Notes App using Docker, follow these steps:
     ```
 
 3. Open the nginx container URL or go to http://localhost:8080 on your device.
+
+4. Jenkinsfile added and README changed to trigger the build.
