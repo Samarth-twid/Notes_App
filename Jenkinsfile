@@ -14,21 +14,21 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    sh 'docker-compose -f $DOCKER_COMPOSE_FILE build'
+                    sh 'docker -f $DOCKER_COMPOSE_FILE build'
                 }
             }
         }
         stage('Test') {
             steps {
                 script {
-                    sh 'docker-compose -f $DOCKER_COMPOSE_FILE run app php artisan test'
+                    sh 'docker -f $DOCKER_COMPOSE_FILE run app php artisan test'
                 }
             }
         }
         stage('Deploy') {
             steps {
                 script {
-                    sh 'docker-compose -f $DOCKER_COMPOSE_FILE up -d'
+                    sh 'docker -f $DOCKER_COMPOSE_FILE up -d'
                 }
             }
         }
