@@ -69,11 +69,12 @@ class NoteController extends Controller
 
         $validatedData = $request->validate($this->rules());
         DB::table('notes')
-              ->where('id', $id)
-              ->update(array_merge($validatedData, [
+            ->where('id', $id)
+            ->update(array_merge($validatedData, [
                 'title' => $validatedData['title'],
                 'content' => $validatedData['content']
-        ]));
+            ]
+        ));
         $note = DB::table('notes')->get()->where('id', $id);
         Redis::del('notes_list');
         Redis::set($cacheKey, json_encode($note), 'EX', 3600);

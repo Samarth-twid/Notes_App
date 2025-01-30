@@ -52,16 +52,6 @@ services:
         depends_on:
             - app
 
-    jenkins:
-        image: jenkins/jenkins:lts
-        container_name: jenkins-server
-        restart: unless-stopped
-        ports:
-            - "8080:8080"
-            - "50000:50000"
-        volumes:
-            - jenkins_home:/var/jenkins_home
-
 volumes:
     db_data:
     redis_data:
